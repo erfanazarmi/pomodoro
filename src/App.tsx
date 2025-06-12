@@ -1,6 +1,7 @@
 import styles from "./App.module.scss";
 import Setting from "./components/setting/Setting";
 import Timer from "./components/timer/Timer";
+import Controls from "./components/controls/Controls";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
       <Setting />
       <Timer />
+      <Controls />
     </div>
   );
 }
