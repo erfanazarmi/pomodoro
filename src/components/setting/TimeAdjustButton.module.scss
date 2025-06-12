@@ -1,0 +1,25 @@
+@use "../../styles/_variables.scss" as theme;
+@use "../../styles/_button-states.scss" as btn;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 24px;
+  border: none;
+  font-weight: bold;
+  color: theme.$white;
+  background-color: theme.$primary;
+  cursor: pointer;
+
+  &.increment {
+    border-radius: 18px 18px 0 0;
+  }
+
+  &.decrement {
+    border-radius: 0 0 18px 18px;
+  }
+  
+  @include btn.button-states(theme.$primary-hover);
+}

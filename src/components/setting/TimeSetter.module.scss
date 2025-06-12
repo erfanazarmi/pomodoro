@@ -1,0 +1,38 @@
+@use "../../styles/_variables.scss" as theme; 
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 16px 8px;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.timeDuration {
+  width: 35px;
+  height: 32px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: theme.$font-mono;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+/* hide input number spin */
+
+input.timeDuration[type="number"]::-webkit-outer-spin-button,
+input.timeDuration[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.timeDuration[type="number"] {
+  -moz-appearance: textfield;
+}
