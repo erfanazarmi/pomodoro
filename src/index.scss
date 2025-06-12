@@ -15,3 +15,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+input,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
