@@ -1,0 +1,14 @@
+@use "./styles/variables" as theme;
+
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  text-align: center;
+  font-family: theme.$font-sans-serif;
+}
+
+body {
+  color: theme.$black;
+  background-color: theme.$bg-color;
+}
