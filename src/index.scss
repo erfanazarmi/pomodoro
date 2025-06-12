@@ -11,4 +11,7 @@
 body {
   color: theme.$black;
   background-color: theme.$bg-color;
+  background-image: url('./assets/images/bg-light.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
