@@ -1,0 +1,20 @@
+@use "../../styles/_variables.scss" as theme;
+
+.label {
+  margin: 40px 0 18px;
+  font-size: 28px;
+}
+
+.timeLeft {
+  min-width: 170px;
+  padding: 14px;
+  background-color: theme.$white;
+  border: 4px solid theme.$primary;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: theme.$font-mono;
+}
+
+.fill {
+  fill: theme.$black;
+}
