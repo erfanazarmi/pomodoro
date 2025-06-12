@@ -23,3 +23,7 @@
   
   @include btn.button-states(theme.$primary-hover);
 }
+
+.fill {
+  fill: theme.$white;
+}

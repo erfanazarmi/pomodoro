@@ -13,7 +13,7 @@ const TimeAdjustButton = ({ type }: Props) => {
           height="28px"
           viewBox="0 -960 960 960"
           width="28px"
-          fill="#FFFFFF"
+          className={styles.fill}
         >
           <path d="m280-400 200-200.67L680-400H280Z" />
         </svg>
@@ -23,7 +23,7 @@ const TimeAdjustButton = ({ type }: Props) => {
           height="28px"
           viewBox="0 -960 960 960"
           width="28px"
-          fill="#FFFFFF"
+          className={styles.fill}
         >
           <path d="M480-360 280-559.33h400L480-360Z" />
         </svg>
