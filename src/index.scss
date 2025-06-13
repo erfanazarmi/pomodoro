@@ -1,17 +1,17 @@
-@use "./styles/variables" as theme;
+@import "./styles/_variables.css";
 
 * {
   padding: 0;
   margin: 0;
   user-select: none;
   text-align: center;
-  font-family: theme.$font-sans-serif;
+  font-family: var(--font-sans);
 }
 
 body {
-  color: theme.$black;
-  background-color: theme.$bg-color;
-  background-image: url('./assets/images/bg-light.jpg');
+  color: var(--text);
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -1,5 +1,3 @@
-@use "../../styles/_variables.scss" as theme; 
-
 .container {
   display: flex;
   flex-direction: column;
@@ -18,7 +16,9 @@
   border: none;
   font-size: 18px;
   font-weight: 400;
-  font-family: theme.$font-mono;
+  font-family: var(--font-mono);
+  color: var(--text);
+  background-color: var(--time-setter-bg);
   
   &:focus {
     outline: none;
@@ -35,4 +35,5 @@ input.timeDuration[type="number"]::-webkit-inner-spin-button {
 
 input.timeDuration[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
