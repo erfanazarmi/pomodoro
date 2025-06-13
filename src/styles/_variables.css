@@ -17,3 +17,18 @@
 
   --bg-image: url('../assets/images/bg-light.jpg');
 }
+
+.dark {
+  --bg-color: #242424;
+  --white: #e0e0e0;
+  --black: #222222;
+  --gray: #333333;
+
+  --text: var(--white);
+  --timer-bg: var(--gray);
+  --time-setter-bg: var(--black);
+  --theme-bg: var(--primary);
+  --theme-bg-hover: var(--primary-hover);
+
+  --bg-image: url('../assets/images/bg-dark.jpg');
+}

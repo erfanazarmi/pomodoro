@@ -1,0 +1,18 @@
+@use "../../styles/_button-states.scss" as btn;
+
+.modeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--theme-bg);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+
+  @include btn.button-states(var(--theme-bg-hover));
+}

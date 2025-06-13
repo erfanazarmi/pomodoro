@@ -1,4 +1,5 @@
 import styles from "./App.module.scss";
+import ThemeToggle from "./components/theme/ThemeToggle";
 import Setting from "./components/setting/Setting";
 import Timer from "./components/timer/Timer";
 import Controls from "./components/controls/Controls";
@@ -6,6 +7,8 @@ import Controls from "./components/controls/Controls";
 function App() {
   return (
     <div className={styles.pageWrapper}>
+      <ThemeToggle />
+
       <h1>
         Pomodoro
         <svg
