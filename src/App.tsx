@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styles from "./App.module.scss";
 import ThemeToggle from "./components/theme/ThemeToggle";
 import Setting from "./components/setting/Setting";
@@ -6,6 +7,14 @@ import Controls from "./components/controls/Controls";
 import VolumeControl from "./components/volume/VolumeControl";
 
 function App() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  }, []);
+
   return (
     <div className={styles.pageWrapper}>
       <ThemeToggle />
@@ -27,6 +36,11 @@ function App() {
       <Timer />
       <Controls />
       <VolumeControl />
+
+      <audio
+        ref={audioRef}
+        src="/src/assets/sounds/beep.wav"
+      />
     </div>
   );
 }
