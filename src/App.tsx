@@ -35,7 +35,7 @@ function App() {
       <Setting />
       <Timer />
       <Controls />
-      <VolumeControl />
+      <VolumeControl audioRef={audioRef} />
 
       <audio
         ref={audioRef}
