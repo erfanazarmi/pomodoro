@@ -1,21 +1,26 @@
 import styles from "./TimeSetter.module.scss";
 import TimeAdjustButton from "./TimeAdjustButton";
+import { useStore } from "../../store/store";
 
 interface Props {
-  type: "session" | "break";
+  mode: "session" | "break";
 };
 
-const TimeSetter = ({ type }: Props) => {
+const TimeSetter = ({ mode }: Props) => {
+  const { isPlaying, sessionLength, breakLength, setTime } = useStore();
+
   return (
     <div className={styles.container}>
-      <h3 className={styles.label}>{type}</h3>
-      <TimeAdjustButton type="increment" />
+      <h3 className={styles.label}>{mode}</h3>
+      <TimeAdjustButton action="increment" mode={mode} />
       <input
         type="number"
-        value={0}
+        value={String(mode === "session" ? sessionLength : breakLength)}
         className={styles.timeDuration}
+        onChange={(e) => setTime(mode, parseInt(e.target.value || "0"))}
+        disabled={isPlaying}
       />
-      <TimeAdjustButton type="decrement" />
+      <TimeAdjustButton action="decrement" mode={mode} />
     </div>
   );
 };

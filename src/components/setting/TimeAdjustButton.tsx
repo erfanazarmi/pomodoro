@@ -1,13 +1,21 @@
 import styles from "./TimeAdjustButton.module.scss";
+import { useStore } from "../../store/store";
 
 interface Props {
-  type: "increment" | "decrement";
+  mode: "session" | "break";
+  action: "increment" | "decrement";
 }
 
-const TimeAdjustButton = ({ type }: Props) => {
+const TimeAdjustButton = ({ mode, action }: Props) => {
+  const { isPlaying, incrementTime, decrementTime } = useStore();
+
   return (
-    <button className={`${styles.button} ${styles[type]}`}>
-      {type === "increment" ? (
+    <button
+      className={`${styles.button} ${styles[action]}`}
+      onClick={action === "increment" ? () => incrementTime(mode) : () => decrementTime(mode)}
+      disabled={isPlaying}
+    >
+      {action === "increment" ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="28px"

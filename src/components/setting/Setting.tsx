@@ -4,8 +4,8 @@ import TimeSetter from "./TimeSetter";
 const Setting = () => {
   return (
     <div className={styles.container}>
-      <TimeSetter type="session" />
-      <TimeSetter type="break" />
+      <TimeSetter mode="session" />
+      <TimeSetter mode="break" />
     </div>
   );
 };
