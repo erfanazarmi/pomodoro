@@ -9,6 +9,9 @@
 
 h1 {
   font-size: 50px;
+  @media (max-height: 700px) {
+    margin-top: 40px;
+  }
 }
 
 .fill {
