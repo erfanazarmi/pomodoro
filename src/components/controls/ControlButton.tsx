@@ -1,24 +1,20 @@
-import { useState } from "react";
 import styles from "./ControlButton.module.scss";
+import { useStore } from "../../store/store";
 
 interface Props {
   type: "play-pause" | "reset";
 }
 
 const ControlButton = ({ type }: Props) => {
-  const [play, setPlay] = useState(false);
-
-  const togglePlay = () => {
-    setPlay((prev) => !prev);
-  };
+  const { isPlaying, togglePlay, resetState } = useStore();
 
   return (
     <button
       className={styles.button}
-      onClick={type === "play-pause" ? togglePlay : () => {}}
+      onClick={type === "play-pause" ? togglePlay : resetState}
     >
       {type === "play-pause" &&
-        (play ? (
+        (isPlaying ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
