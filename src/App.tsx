@@ -5,6 +5,7 @@ import Setting from "./components/setting/Setting";
 import Timer from "./components/timer/Timer";
 import Controls from "./components/controls/Controls";
 import VolumeControl from "./components/volume/VolumeControl";
+import beepSound from "./assets/sounds/beep.wav";
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -39,7 +40,7 @@ function App() {
 
       <audio
         ref={audioRef}
-        src="/src/assets/sounds/beep.wav"
+        src={beepSound}
       />
     </div>
   );
