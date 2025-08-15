@@ -8,6 +8,7 @@ interface Settings {
   displayTime: number;
   isPlaying: boolean;
   currentMode: Mode;
+  notificationEnabled: boolean;
 }
 
 interface Actions {
@@ -18,11 +19,12 @@ interface Actions {
   incrementTime: (mode: Mode) => void;
   decrementTime: (mode: Mode) => void;
   setTime: (mode: Mode, value: number) => void;
+  toggleNotification: () => void;
 }
 
 type State = Settings & Actions;
 
-const defaultSettings: Settings = {
+const defaultSettings: Omit<Settings, "notificationEnabled"> = {
   breakLength: 5,
   sessionLength: 25,
   displayTime: 25 * 60,
@@ -33,6 +35,8 @@ const defaultSettings: Settings = {
 export const useStore = create<State>((set) => ({
   ...defaultSettings,
 
+  notificationEnabled: true,
+
   resetState: () => set(() => ({ ...defaultSettings })),
 
   togglePlay: () => set((state) => ({ isPlaying: !state.isPlaying })),
@@ -40,6 +44,8 @@ export const useStore = create<State>((set) => ({
   setDisplayTime: (time) => set(() => ({ displayTime: time })),
 
   setCurrentMode: (mode) => set(() => ({ currentMode: mode })),
+
+  toggleNotification: () => set((state) => ({ notificationEnabled: !state.notificationEnabled})),
 
   incrementTime: (mode) =>
     set((state) => {

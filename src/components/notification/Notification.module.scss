@@ -1,0 +1,55 @@
+@use "../../styles/_button-states.scss" as btn;
+
+.notificationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--theme-bg);
+  position: fixed;
+  top:20px;
+  right: 78px;
+  cursor: pointer;
+
+  @include btn.button-states(var(--theme-bg-hover));
+}
+
+.tooltip {
+  width: 115px;
+  background-color: #555555;
+  color: #ffffff;
+  padding: 7px 12px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  right: 125%;
+  margin-left: -60px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0s;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #555555;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .notificationButton:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 1s;
+  }
+}

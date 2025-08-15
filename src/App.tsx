@@ -6,11 +6,15 @@ import Timer from "./components/timer/Timer";
 import Controls from "./components/controls/Controls";
 import VolumeControl from "./components/volume/VolumeControl";
 import beepSound from "./assets/sounds/beep.wav";
+import NotificationButton from "./components/notification/Notification";
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
+    if ('Notification' in window) {
+      Notification.requestPermission();
+    }
     if (audioRef.current) {
       audioRef.current.load();
     }
@@ -37,6 +41,7 @@ function App() {
       <Timer audioRef={audioRef} />
       <Controls />
       <VolumeControl audioRef={audioRef} />
+      <NotificationButton />
 
       <audio
         ref={audioRef}

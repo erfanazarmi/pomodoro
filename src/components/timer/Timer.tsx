@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import { useStore } from "../../store/store";
 import styles from "./Timer.module.scss";
+import { showNotification } from "../notification/Notification";
 
 interface Props {
   audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
 const Timer = ({ audioRef }: Props) => {
-  const { isPlaying, currentMode, sessionLength, breakLength, displayTime, setCurrentMode, setDisplayTime } = useStore();
+  const { isPlaying, currentMode, sessionLength, breakLength, displayTime, notificationEnabled, setCurrentMode, setDisplayTime } = useStore();
 
   const endTimeRef = useRef<number | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -34,6 +35,9 @@ const Timer = ({ audioRef }: Props) => {
         const remaining = Math.max(Math.round((endTimeRef.current! - now) / 1000), 0);
         setDisplayTime(remaining);
         if (remaining === 0) {
+          if (notificationEnabled) {
+            showNotification(currentMode);
+          }
           if (audioRef.current) {
             audioRef.current.play();
           }
