@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   height: 100%;
 }
 
 h1 {
   font-size: 50px;
   @media (max-height: 700px) {
-    margin-top: 40px;
+    margin-top: 120px;
   }
 }
 
