@@ -19,7 +19,7 @@ interface Actions {
   incrementTime: (mode: Mode) => void;
   decrementTime: (mode: Mode) => void;
   setTime: (mode: Mode, value: number) => void;
-  toggleNotification: () => void;
+  setNotificationState: (value: boolean) => void;
 }
 
 interface MobileCheck {
@@ -40,7 +40,7 @@ const defaultSettings: Omit<Settings, "notificationEnabled"> = {
 export const useStore = create<State>((set) => ({
   ...defaultSettings,
 
-  notificationEnabled: true,
+  notificationEnabled: false,
 
   isMobile: false,
 
@@ -54,7 +54,7 @@ export const useStore = create<State>((set) => ({
 
   setCurrentMode: (mode) => set(() => ({ currentMode: mode })),
 
-  toggleNotification: () => set((state) => ({ notificationEnabled: !state.notificationEnabled})),
+  setNotificationState: (value) => set(() => ({ notificationEnabled: value })),
 
   incrementTime: (mode) =>
     set((state) => {

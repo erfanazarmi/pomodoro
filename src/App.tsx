@@ -11,13 +11,21 @@ import NotificationButton from "./components/notification/Notification";
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { setIsMobile } = useStore();
+  const { setIsMobile, setNotificationState } = useStore();
 
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     setIsMobile(isMobile);
     if (!isMobile && 'Notification' in window) {
-      Notification.requestPermission();
+      if (Notification.permission === 'granted') {
+        setNotificationState(true);
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            setNotificationState(true);
+          }
+        });
+      }
     }
     if (audioRef.current) {
       audioRef.current.load();
