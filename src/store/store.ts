@@ -22,7 +22,12 @@ interface Actions {
   toggleNotification: () => void;
 }
 
-type State = Settings & Actions;
+interface MobileCheck {
+  isMobile: boolean;
+  setIsMobile: (value: boolean) => void;
+}
+
+type State = Settings & Actions & MobileCheck;
 
 const defaultSettings: Omit<Settings, "notificationEnabled"> = {
   breakLength: 5,
@@ -36,6 +41,10 @@ export const useStore = create<State>((set) => ({
   ...defaultSettings,
 
   notificationEnabled: true,
+
+  isMobile: false,
+
+  setIsMobile: (value) => set(() => ({ isMobile: value })),
 
   resetState: () => set(() => ({ ...defaultSettings })),
 

@@ -11,7 +11,11 @@ export const showNotification = (currentMode: "session" | "break") => {
 };
 
 const NotificationButton = () => {
-  const { notificationEnabled, toggleNotification } = useStore();
+  const { isMobile, notificationEnabled, toggleNotification } = useStore();
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <button className={styles.notificationButton} onClick={toggleNotification} >

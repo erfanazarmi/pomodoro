@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Timer = ({ audioRef }: Props) => {
-  const { isPlaying, currentMode, sessionLength, breakLength, displayTime, notificationEnabled, setCurrentMode, setDisplayTime } = useStore();
+  const { isMobile, isPlaying, currentMode, sessionLength, breakLength, displayTime, notificationEnabled, setCurrentMode, setDisplayTime } = useStore();
 
   const endTimeRef = useRef<number | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -35,7 +35,7 @@ const Timer = ({ audioRef }: Props) => {
         const remaining = Math.max(Math.round((endTimeRef.current! - now) / 1000), 0);
         setDisplayTime(remaining);
         if (remaining === 0) {
-          if (notificationEnabled) {
+          if (!isMobile && notificationEnabled) {
             showNotification(currentMode);
           }
           if (audioRef.current) {

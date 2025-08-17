@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useStore } from "./store/store";
 import styles from "./App.module.scss";
 import ThemeToggle from "./components/theme/ThemeToggle";
 import Setting from "./components/setting/Setting";
@@ -10,9 +11,12 @@ import NotificationButton from "./components/notification/Notification";
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { setIsMobile } = useStore();
 
   useEffect(() => {
-    if ('Notification' in window) {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    setIsMobile(isMobile);
+    if (!isMobile && 'Notification' in window) {
       Notification.requestPermission();
     }
     if (audioRef.current) {
